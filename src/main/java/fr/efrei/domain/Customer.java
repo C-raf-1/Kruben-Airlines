@@ -35,6 +35,16 @@ public class Customer {
         return mail;
     }
 
+    @Override
+    public String toString() {
+        return
+                "➜numberPassport: " + numberPassport + '\n' +
+                "➜name: " + name + '\n' +
+                "➜lastName: " + lastName + '\n' +
+                "➜date: " + date + '\n' +
+                "➜mail: " + mail + '\n';
+    }
+
     public static class CustomerBuilder{
         String numberPassport;
         String name;
