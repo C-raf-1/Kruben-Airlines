@@ -1,6 +1,7 @@
 package fr.efrei.factory;
 
 import fr.efrei.domain.Reservation;
+import fr.efrei.util.Helper;
 
 import java.util.Random;
 
@@ -15,6 +16,11 @@ public class ReservationFactory {
         // Génère un identifiant de réservation aléatoire
         int idBookingInt = random.nextInt();
         String idBooking = String.valueOf(idBookingInt);
+
+        if(Helper.isNullOrEmpty(date)||Helper.isNullOrEmpty(seaty)||Helper.isNullOrEmpty(name)||Helper.isNullOrEmpty(lastName)||Helper.isNullOrEmpty(planeNumber)
+        ||Helper.isNullOrEmpty(flightNumber)||Helper.isNullOrEmpty(destination)||Helper.isNullOrEmpty(departure)){
+            return null;
+        }
 
         // Crée et retourne une instance de Reservation
         return new Reservation.ReservationBuilder()
