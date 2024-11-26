@@ -69,6 +69,18 @@ public class Plane {
         }
     }
 
+    public void deletSeat(){
+        // Convertir la lettre en un index numérique (par exemple, A -> 0, B -> 1, etc.)
+        for(int i = 0;i<5;i++){
+            for(int j = 0;j<4;j++){
+                if (this.seats[i][j] == "▼"){
+                    this.seats[i][j] = "□";
+                }
+            }
+        }
+
+    }
+    
     public static class PlaneBuilder{
         String[][] seats;
         String name;
