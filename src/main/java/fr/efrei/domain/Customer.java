@@ -1,11 +1,14 @@
 package fr.efrei.domain;
 
 public class Customer {
-    String numberPassport;
-    String name;
-    String lastName;
-    String date;
-    String mail;
+    private String numberPassport;
+    private String name;
+    private String lastName;
+    private String date;
+    private String mail;
+    private int account;
+    
+
 
     private Customer(Customer.CustomerBuilder builder) {
         this.numberPassport = builder.numberPassport;
@@ -13,6 +16,7 @@ public class Customer {
         this.lastName = builder.lastName;
         this.date = builder.date;
         this.mail = builder.mail;
+        this.account = builder.account;
     }
 
     public String getNumberPassport() {
@@ -34,6 +38,13 @@ public class Customer {
     public String getMail() {
         return mail;
     }
+    public int getAccount(){
+        return account;
+    }
+
+    public void setAccount(int account){
+        this.account=account;
+    }
 
     @Override
     public String toString() {
@@ -42,7 +53,8 @@ public class Customer {
                 "➜name: " + name + '\n' +
                 "➜lastName: " + lastName + '\n' +
                 "➜date: " + date + '\n' +
-                "➜mail: " + mail + '\n';
+                "➜mail: " + mail + '\n' +
+                "➜account: " + account + '\n';
     }
 
     public static class CustomerBuilder{
@@ -51,6 +63,7 @@ public class Customer {
         String lastName;
         String date;
         String mail;
+        int account;
 
 
         public CustomerBuilder setNumberPassport(String numberPassport){
@@ -71,6 +84,10 @@ public class Customer {
         }
         public CustomerBuilder setMail(String mail){
             this.mail = mail;
+            return this;
+        }
+        public CustomerBuilder setAccount(int account){
+            this.account = account;
             return this;
         }
         public Customer build(){
