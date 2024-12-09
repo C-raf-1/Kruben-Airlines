@@ -1,12 +1,14 @@
 package fr.efrei.domain;
 
+import java.time.LocalDate;
+
 public class Flight {
     String idFlight;
     String destination;
     String departure;
     String idPlane;
     int price;
-    String date;
+    LocalDate date;
 
 
     private Flight(FlightBuilder builder) {
@@ -39,7 +41,7 @@ public class Flight {
         return price;
     }
 
-    public String getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
@@ -63,7 +65,7 @@ public class Flight {
         String departure;
         String idPlane;
         int price;
-        String date;
+        LocalDate date;
 
         public FlightBuilder setIdFlight(String idFlight) {
             this.idFlight = idFlight;
@@ -90,7 +92,7 @@ public class Flight {
             return this;
         }
 
-        public FlightBuilder setDate(String date) {
+        public FlightBuilder setDate(LocalDate date) {
             this.date = date;
             return this;
         }

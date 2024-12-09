@@ -1,7 +1,8 @@
 package fr.efrei.domain;
 
+import java.time.LocalDate;
 public class Reservation {
-    private String date;
+    private LocalDate date;
     private String idBooking;         // Identifiant de réservation
     private String seaty;          // Lettre du siège
     private int seatx;             // Numéro de rangée du siège
@@ -28,7 +29,7 @@ public class Reservation {
 
     // Getters
 
-    public String getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
@@ -86,7 +87,7 @@ public class Reservation {
 
     // Classe Builder
     public static class ReservationBuilder {
-        private String date;
+        private LocalDate date;
         private String idBooking;
         private String seaty;
         private int seatx;
@@ -98,7 +99,7 @@ public class Reservation {
         private String departure;
 
         // Méthodes pour définir chaque champ
-        public ReservationBuilder setDate(String date) {
+        public ReservationBuilder setDate(LocalDate date) {
             this.date = date;
             return this;
         }

@@ -3,12 +3,13 @@ package fr.efrei.factory;
 import fr.efrei.domain.Reservation;
 import fr.efrei.util.Helper;
 
+import java.time.LocalDate;
 import java.util.Random;
 
 public class ReservationFactory {
 
 
-    public static Reservation createReservation(String date, String seaty, int seatx, String name, String lastName,
+    public static Reservation createReservation(LocalDate date, String seaty, int seatx, String name, String lastName,
                                                 String planeNumber, String flightNumber,
                                                 String destination, String departure) {
         Random random = new Random();
@@ -17,7 +18,7 @@ public class ReservationFactory {
         int idBookingInt = random.nextInt();
         String idBooking = String.valueOf(idBookingInt);
 
-        if(Helper.isNullOrEmpty(date)||Helper.isNullOrEmpty(seaty)||Helper.isNullOrEmpty(name)||Helper.isNullOrEmpty(lastName)||Helper.isNullOrEmpty(planeNumber)
+        if(Helper.isNullOrEmpty(seaty)||Helper.isNullOrEmpty(name)||Helper.isNullOrEmpty(lastName)||Helper.isNullOrEmpty(planeNumber)
         ||Helper.isNullOrEmpty(flightNumber)||Helper.isNullOrEmpty(destination)||Helper.isNullOrEmpty(departure)){
             return null;
         }
