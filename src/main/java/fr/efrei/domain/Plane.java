@@ -4,9 +4,9 @@ import java.sql.SQLOutput;
 import java.util.Arrays;
 
 public class Plane {
-    String[][] seats;
-    String name;
-    String idPlane;
+    private String[][] seats;
+    private String name;
+    private String idPlane;
 
     private Plane(PlaneBuilder builder) {
         this.seats = builder.seats;
