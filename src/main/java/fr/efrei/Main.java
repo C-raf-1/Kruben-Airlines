@@ -31,16 +31,14 @@ public class Main {
         Customer customer1;
         customer1 = askingInformation(); //creation de l'utilisateur
         ArrayList<String> alreadyType = new ArrayList<>();
-
         LocalDate date = checkDate();
-
-
         Flight flight1 = createFlight(plane1.getIdPlane(), date);
         Flight flight2 = createFlight(plane2.getIdPlane(), date);
         Flight flight3 = createFlight(plane3.getIdPlane(), date);
         flight1 = repositoryF.create(flight1);
         flight2 = repositoryF.create(flight2);
         flight3 = repositoryF.create(flight3);
+
         while (true) {//debut du menu
             System.out.println("\n" + "type 1 to books a flight \n" + "type 2 to see your booking \n" + "type 3 to see the seats of our 3 planes \n" + "type 4 to manage your information");
             String choice = scanner.nextLine();
@@ -51,22 +49,18 @@ public class Main {
                 case "1": //cas pour choisir les vols
                     System.out.println(flight1+"\n"+flight2+"\n"+flight3+"\n");
                     String flightChoice;
-
                     while(true) {
                         System.out.println("choose your flight or tap 4 to go back ");
                         flightChoice = scanner.nextLine();
                         boolean exists = false;
-
                         if(flightChoice.equals("4")){
                             break;
                         }
-
                         if (alreadyType.contains(flightChoice)) {
                             System.out.println("Value already exists! Please enter a different value.");
                         } else {
                             // Ajouter le vol à la liste si ce n'est pas un doublon
                             alreadyType.add(flightChoice);
-
                             exists = true;
                         }
                         if (exists){
@@ -80,16 +74,13 @@ public class Main {
                         System.out.println("your reservation number is : " + reservation1.getIdBooking());
                     }
                     break;
-
                 case "2":
                     reservationList = repositoryR.getall();
                     alreadyType = menu2(reservationList,isGood,seaty,seatx,alreadyType);
                     break;
-
                 case "3":
                     menu3(plane1,plane2,plane3);
                     break;
-
                 case "4":
                     customer1 = menu4(customer1);
                     break;
@@ -98,5 +89,4 @@ public class Main {
             }
         }
     }
-
 }
