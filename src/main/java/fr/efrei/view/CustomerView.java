@@ -11,12 +11,12 @@ public class CustomerView {
         Scanner scanner = new Scanner(System.in);
         Customer customer = null;
         while(customer == null) {
-            System.out.println("pour poursuivre votre inscription veuillez vous identifier");
+            System.out.println("Please put your information");
             System.out.println("PassportId : ");
             String numberPassport = scanner.nextLine();
-            System.out.println("nom : ");
+            System.out.println("name : ");
             String name = scanner.nextLine();
-            System.out.println("prenom : ");
+            System.out.println("Last name : ");
             String lastName = scanner.nextLine();
             String date;
             while(true) {
