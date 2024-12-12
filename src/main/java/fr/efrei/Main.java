@@ -10,9 +10,9 @@ import java.util.*;
 import static fr.efrei.factory.FlightFactory.createFlight;
 import static fr.efrei.factory.PlaneFactory.creatPlane;
 import static fr.efrei.view.CustomerView.askingInformation;
-import static fr.efrei.view.CustomerView.menu4;
-import static fr.efrei.view.FlightView.BookingFlightAndCreateReservation;
-import static fr.efrei.view.PlaneView.menu3;
+import static fr.efrei.view.CustomerView.*;
+import static fr.efrei.view.FlightBookingView.*;
+import static fr.efrei.view.PlaneView.*;
 import static fr.efrei.view.ReservationView.*;
 
 public class Main {
@@ -69,7 +69,7 @@ public class Main {
                     }//on verifie que le user ne puisse pas reserver 2 fois le meme vol
                     if (flightChoice.equals("1")||flightChoice.equals("2")||flightChoice.equals("3")){
                         Reservation reservation1;
-                        reservation1 = BookingFlightAndCreateReservation(plane1,plane2,plane3,flight1,flight2,flight3,customer1,flightChoice);
+                        reservation1 = Menu1(plane1,plane2,plane3,flight1,flight2,flight3,customer1,flightChoice);
                         repositoryR.create(reservation1);//on ajoute la reservation a la ligne.
                         System.out.println("your reservation number is : " + reservation1.getIdBooking());
                     }
