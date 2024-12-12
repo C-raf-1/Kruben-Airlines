@@ -13,32 +13,6 @@ import java.util.Scanner;
 
 public class ReservationView {
 
-    public static LocalDate checkDate(){
-        Scanner scanner = new Scanner(System.in);
-        String inputDate;
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        LocalDate date = null;
-        while (true) {
-            System.out.println("Which date would you like to travel to? (format: yyyy-MM-dd)");
-
-            inputDate = scanner.nextLine();
-            try {
-                // Tente de convertir la chaîne en LocalDate
-                date = LocalDate.parse(inputDate, formatter);
-
-                // Vérifie si la date est antérieure à aujourd'hui
-                if (date.isBefore(LocalDate.now())) {
-                    System.out.println("The date cannot be earlier than today. Please enter a valid date.");
-                } else {
-                    // Date valide
-                    break;
-                }
-            } catch (DateTimeParseException e) {
-                System.out.println("Invalid date format. Please use the format yyyy-MM-dd.");
-            }
-        }
-        return date;
-    }
     public static void displayReservation(List<Reservation> reservationList) {
         IPlaneRepository repositoryP = PlaneRepository.getRepository();
 
@@ -105,7 +79,7 @@ public class ReservationView {
         reservationList = repositoryR.getall();
         if (!reservationList.isEmpty()) {
             displayReservation(reservationList);//affiche les voles
-            System.out.println(" \n" + "Type 1 if you want to modify your reservation");
+            System.out.println(" \n" + "Type 1 if you want to modify your reservation or 2 to go back");
             String modif = scanner.nextLine();
 
             if (modif.equals("1")) {
