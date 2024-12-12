@@ -7,14 +7,44 @@ import fr.efrei.domain.Plane;
 import fr.efrei.domain.Reservation;
 import fr.efrei.repository.*;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
 import static fr.efrei.factory.ReservationFactory.createReservation;
 import static fr.efrei.view.ReservationView.checkSeat;
 
-public class FlightView {
+public class FlightBookingView {
 
-    public static Reservation BookingFlightAndCreateReservation(Plane plane1, Plane plane2, Plane plane3, Flight flight1, Flight flight2, Flight flight3, Customer customer1,String flightChoice){
+    public static LocalDate checkDate(){
+        Scanner scanner = new Scanner(System.in);
+        String inputDate;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate date = null;
+        while (true) {
+            System.out.println("Which date would you like to travel to? (format: yyyy-MM-dd)");
+
+            inputDate = scanner.nextLine();
+            try {
+                // Tente de convertir la chaîne en LocalDate
+                date = LocalDate.parse(inputDate, formatter);
+
+                // Vérifie si la date est antérieure à aujourd'hui
+                if (date.isBefore(LocalDate.now())) {
+                    System.out.println("The date cannot be earlier than today. Please enter a valid date.");
+                } else {
+                    // Date valide
+                    break;
+                }
+            } catch (DateTimeParseException e) {
+                System.out.println("Invalid date format. Please use the format yyyy-MM-dd.");
+            }
+        }
+        return date;
+    }
+
+    public static Reservation Menu1(Plane plane1, Plane plane2, Plane plane3, Flight flight1, Flight flight2, Flight flight3, Customer customer1,String flightChoice){
         Scanner scanner = new Scanner(System.in);
         IPlaneRepository repositoryP = PlaneRepository.getRepository();
         IFlightRepository repositoryF = FlightRepository.getRepository();
